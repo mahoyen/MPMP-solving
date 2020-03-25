@@ -26,26 +26,24 @@ table = np.arange(nInvestors)
 ```{python}
 investors = table.copy()
 
+#For every combination of investors
 for investorCombination in multiset_permutations(investors):
     print(investorCombination)
     nHappyInvestorArray = np.zeros(nInvestors)
+    
+    #For every rotation around the table
     for iShift in range(nInvestors):
+        
         nHappyInvestorArray[iShift] = np.count_nonzero(table == investorCombination)
         if nHappyInvestorArray[iShift] > 1:
             break
+            
         investorCombination = np.roll(investorCombination, shift=1)
+    
     print(nHappyInvestorArray)
     if np.count_nonzero(nHappyInvestorArray > 1) == 0:
         print("Solution!!:")
         print(investorCombination+1)
         break
     
-```
-
-```{python}
-
-```
-
-```{python}
-
 ```
