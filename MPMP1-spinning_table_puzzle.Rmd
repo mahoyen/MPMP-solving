@@ -1,0 +1,51 @@
+---
+jupyter:
+  jupytext:
+    formats: ipynb,Rmd
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.1'
+      jupytext_version: 1.2.4
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+---
+
+```{python}
+import numpy as np
+from sympy.utilities.iterables import multiset_permutations
+```
+
+```{python}
+nInvestors = 7
+table = np.arange(nInvestors)
+```
+
+```{python}
+investors = table.copy()
+
+for investorCombination in multiset_permutations(investors):
+    print(investorCombination)
+    nHappyInvestorArray = np.zeros(nInvestors)
+    for iShift in range(nInvestors):
+        nHappyInvestorArray[iShift] = np.count_nonzero(table == investorCombination)
+        if nHappyInvestorArray[iShift] > 1:
+            break
+        investorCombination = np.roll(investorCombination, shift=1)
+    print(nHappyInvestorArray)
+    if np.count_nonzero(nHappyInvestorArray > 1) == 0:
+        print("Solution!!:")
+        print(investorCombination+1)
+        break
+    
+```
+
+```{python}
+
+```
+
+```{python}
+
+```
