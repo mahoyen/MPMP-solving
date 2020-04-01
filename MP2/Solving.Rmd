@@ -40,5 +40,18 @@ distance(fuelTankSize)
 ```
 
 ```{python}
+def other_distance(fuel):
+    print(fuel)
+    if fuel <= 1:
+        return 1
+    reservedFuel = fuel//5
+    return 2*reservedFuel+other_distance(3*reservedFuel)
+```
+
+```{python}
+other_distance(fuelTankSize)
+```
+
+```{python}
 
 ```
