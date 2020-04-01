@@ -53,5 +53,25 @@ other_distance(fuelTankSize)
 ```
 
 ```{python}
+def tryReachingGoal(distanceToStart, distanceToGoal, remainingFuel):
+    print(distanceToStart, distanceToGoal, remainingFuel)
+    if distanceToGoal <= remainingFuel:
+        print("Goal Reached")
+        return remainingFuel
+    elif distanceToStart > remainingFuel:
+        print("Not Enough Fuel to return")
+        return remainingFuel-distanceToStart
+    else:
+        reservedFuel = (remainingFuel-distanceToStart)//5
+        extraDistance = 2*reservedFuel
+        return extraDistance+tryReachingGoal(distanceToStart+extraDistance, distanceToGoal-extraDistance, fuelTankSize-(distanceToStart+extraDistance)+reservedFuel)
+        
+```
+
+```{python}
+tryReachingGoal(0, 800, fuelTankSize)
+```
+
+```{python}
 
 ```
