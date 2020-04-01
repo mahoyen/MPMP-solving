@@ -69,8 +69,13 @@ def tryReachingGoal(distanceToStart, distanceToGoal, remainingFuel):
 ```
 
 ```{python}
-tryReachingGoal(0, 800, fuelTankSize)
+tryReachingGoal(0, 600, fuelTankSize)
 ```
+
+## Comments
+This does not work on the second thing, because it does not take into account that you can go on the same stretch several times.
+
+Maybe we need to look at the extreme cases of just going a tiny distance, and the almost maximum distance to see if that give us any more information about how to solve this.
 
 ```{python}
 
