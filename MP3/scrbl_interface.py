@@ -26,7 +26,7 @@ class ScrabbleScreen:
         nCols = int(np.ceil(nTiles/nRows))
         self.intLetterArray = np.ones((nRows, nCols), int) * ord(symbolDict["hiddenChar"])
         
-    def updateLetterArray(newIntLetterArray):
+    def updateLetterArray(self, newIntLetterArray):
         self.intLetterArray = newIntLetterArray
         
     def printScreen(self):
