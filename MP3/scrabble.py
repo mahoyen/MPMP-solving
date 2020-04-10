@@ -32,24 +32,24 @@ class ScrabbleLetters:
         screen.printScreen()
         
     def shiftBy(self, shifts, axis=0):
-        if np.size(self.letterArray, axis=axis) != len(shifts):
+        if np.size(self.intLetterArray, axis=axis) != len(shifts):
             raise ValueError("length of shifts does not equal length of array along axis")
             return
 
 
-        transposedLetterArray = self.letterArray.transpose((int(1==axis), int(0==axis)))
+        transposedLetterArray = self.intLetterArray.transpose((int(1==axis), int(0==axis)))
 
         for iRow, shift in enumerate(shifts):
             transposedLetterArray[iRow, :] = np.roll(transposedLetterArray[iRow, :], shift)
 
-        self.letterArray = transposedLetterArray.transpose((int(1==axis), int(0==axis)))
+        self.intLetterArray = transposedLetterArray.transpose((int(1==axis), int(0==axis)))
         
     def swapEveryN(self, n, axis=0):
-        transposedLetterArray = self.letterArray.transpose((int(1==axis), int(0==axis)))
+        transposedLetterArray = self.intLetterArray.transpose((int(1==axis), int(0==axis)))
 
         nSwaps = len(transposedLetterArray)//n
         for iSwap in range(nSwaps):
             transposedLetterArray[:, [iSwap, iSwap+n]] = transposedLetterArray[:, [iSwap+n, iSwap]]
 
 
-        self.letterArray = transposedLetterArray.transpose((int(1==axis), int(0==axis)))
+        self.intLetterArray = transposedLetterArray.transpose((int(1==axis), int(0==axis)))
