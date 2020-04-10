@@ -28,7 +28,7 @@ class ScrabbleLetters:
         intLetterArray = np.reshape(intLetterArray,(nRow,nCols))
         return intLetterArray
     
-    def showScreen():
+    def showScreen(self):
         screen.printScreen()
         
     def shiftBy(self, shifts, axis=0):
@@ -45,10 +45,14 @@ class ScrabbleLetters:
         self.intLetterArray = transposedLetterArray.transpose((int(1==axis), int(0==axis)))
         
     def swapEveryN(self, n, axis=0):
-        transposedLetterArray = self.intLetterArray.transpose((int(1==axis), int(0==axis)))
+        if n < 1:
+            return
 
+        transposedLetterArray = self.intLetterArray.transpose((int(1==axis), int(0==axis)))
         nSwaps = len(transposedLetterArray)//n
         for iSwap in range(nSwaps):
+            if iSwap+n >= len(transposedLetterArray[0]):
+                break
             transposedLetterArray[:, [iSwap, iSwap+n]] = transposedLetterArray[:, [iSwap+n, iSwap]]
 
 
