@@ -21,21 +21,19 @@ def cmdLinePrintScreen(charArray):
 # -
 
 class ScrabbleScreen:
-    def __init__(self, nTiles=100):
-        nRows = int(np.ceil(np.sqrt(nTiles)))
-        nCols = int(np.ceil(nTiles/nRows))
-        self.intLetterArray = np.ones((nRows, nCols), int) * ord(symbolDict["hiddenChar"])
+    def __init__(self, intLetterArray):
+        self.intLetterArray = intLetterArray
         
     def updateLetterArray(self, newIntLetterArray):
         self.intLetterArray = newIntLetterArray
         
     def printScreen(self):
         cmdLinePrintScreen(self.intLetterArray)
-        
 
 
 if __name__ == "__main__":
-    SScreen = ScrabbleScreen()
+    intLetterArray = np.ones((10, 10), int) * ord(symbolDict["hiddenChar"])
+    SScreen = ScrabbleScreen(intLetterArray)
     SScreen.printScreen()
 
 
