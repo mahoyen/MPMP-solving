@@ -70,6 +70,51 @@ def test_shiftBy(shifts,axis,expected):
 
     # Compare
     nptest.assert_array_equal(scrbl_letters.intLetterArray, expected)
+# -
+# +
+axis0n0 = np.array([[ord(" "), ord(" "), ord("A")],
+                    [ord("A"), ord("A"), ord("A")],
+                    [ord("A"), ord("I"), ord("I")],
+                    ])
 
+axis0n1 = np.array([[ord("A"), ord("I"), ord("I")],
+                    [ord("A"), ord("A"), ord("A")],
+                    [ord(" "), ord(" "), ord("A")],
+                    ])
+                    
+axis0n2 = np.array([[ord("A"), ord("A"), ord("A")],
+                    [ord(" "), ord(" "), ord("A")],
+                    [ord("A"), ord("I"), ord("I")]])
+                    
+axis1n0 = np.array([[ord(" "), ord(" "), ord("A")],
+                    [ord("A"), ord("A"), ord("A")],
+                    [ord("A"), ord("I"), ord("I")]])
 
+axis1n1 = np.array([[ord("A"), ord(" "), ord(" ")],
+                    [ord("A"), ord("A"), ord("A")],
+                    [ord("I"), ord("I"), ord("A")]])
+                    
+axis1n2 = np.array([[ord(" "), ord(" "), ord("A")],
+                    [ord("A"), ord("A"), ord("A")],
+                    [ord("I"), ord("A"), ord("I")]])
+
+# -
+# +
+@pytest.mark.parametrize("n,axis,expected",      [(0, 0, axis0n0),
+                                                  (1, 0, axis0n1),
+                                                  (2, 0, axis0n2),
+                                                  (0, 1, axis1n0),
+                                                  (1, 1, axis1n1),
+                                                  (2, 1, axis1n2),
+                                                  ])
+def test_swapEveryN(n, axis, expected):
+    # Setup
+    scrbl_letters = ScrabbleLetters()
+    scrbl_letters.intLetterArray = correctIntLetterArray.copy()
+
+    # Test
+    scrbl_letters.swapEveryN(n, axis=axis)
+
+    # Compare
+    nptest.assert_array_equal(scrbl_letters.intLetterArray, expected)
 
