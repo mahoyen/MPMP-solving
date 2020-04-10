@@ -20,11 +20,6 @@ def cmdLinePrintScreen(charArray):
 
 # -
 
-thing = np.ones((5,3), int) * 100;
-print(thing)
-cmdLinePrintScreen(thing)
-
-
 class ScrabbleScreen:
     def __init__(self, nTiles=100):
         nRows = int(np.ceil(np.sqrt(nTiles)))
@@ -39,7 +34,8 @@ class ScrabbleScreen:
         
 
 
-SScreen = ScrabbleScreen()
-SScreen.printScreen()
+if __name__ == "__main__":
+    SScreen = ScrabbleScreen()
+    SScreen.printScreen()
 
 
